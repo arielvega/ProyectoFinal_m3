@@ -1,7 +1,7 @@
-#Proyecto Final
+# Proyecto Final
 
 
-##Requerimientos
+## Requerimientos
 
 Se necesita tener instalado NodeJS
 
