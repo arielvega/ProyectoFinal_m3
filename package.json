@@ -10,7 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "chai": "^4.2.0",
-    "mocha": "^6.2.0"
+    "cucumber": "^5.1.0",
+    "express": "^4.17.1",
+    "mocha": "^6.2.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "selenium-cucumber-js": "^1.7.0"
   }
 }

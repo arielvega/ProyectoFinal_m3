@@ -7,9 +7,13 @@ module.exports = {
             }
             return _montoInicial
         }(montoInicial);
-
         this.consultarSaldo = function () {
             return _saldo;
+        };
+        var _moneda;
+        _moneda = 'Bs.';
+        this.consultarMoneda = function () {
+            return _moneda;
         };
         this.registrarIngreso = function(monto){
             if (monto<0){

@@ -72,9 +72,59 @@ describe("TestBilletera",function(){
 
         it('Si se ejecuta el metodo "registrar ingreso" con un monto menor a cero, se lanza una excepcion "Monto no debe ser menor a 0"', function () {
             montoInicial = 150;
-            ingreso = 0;
             billetera = new modulo.Billetera(montoInicial);
             expect(() => billetera.registrarIngreso(-1)).to.throw(Error, /Monto no debe ser menor a 0/);
+        });
+    });
+
+    describe("Test al metodo 'registrar salida'", function() {
+
+        it('Si la billetera tiene un monto inicial = 0, entonces al ejecutar el metodo "registrar salida" con un monto mayor a cero, se lanza una excepcion "Saldo insuficiente en la billetera"', function () {
+            montoInicial = 0;
+            billetera = new modulo.Billetera(montoInicial);
+            expect(() => billetera.registrarSalida(100)).to.throw(Error, /Saldo insuficiente en la billetera/);
+        });
+
+        it('Si la billetera tiene un monto inicial = 0, entonces al ejecutar el metodo "registrar salida" con un monto igual a cero, la billetera continua en saldo 0', function () {
+            montoInicial = 0;
+            salida = 0;
+            billetera = new modulo.Billetera(montoInicial);
+            billetera.registrarSalida(salida);
+            saldo = billetera.consultarSaldo();
+            saldoEsperado = 0;
+            assert.equal(saldo, saldoEsperado);
+        });
+
+        it('Si la billetera tiene un monto inicial > 0, entonces al ejecutar el metodo "registrar salida" con un monto mayor a cero, este monto se disminuye al saldo de la billetera', function () {
+            montoInicial = 20;
+            salida = 4;
+            billetera = new modulo.Billetera(montoInicial);
+            billetera.registrarSalida(salida);
+            saldo = billetera.consultarSaldo();
+            saldoEsperado = montoInicial - salida;
+            assert.equal(saldo, saldoEsperado);
+        });
+
+        it('Si la billetera tiene un monto inicial > 0, entonces al ejecutar el metodo "registrar salida" con un monto igual a cero, la billetera continua con el saldo que tenia inicialmente', function () {
+            montoInicial = 150;
+            salida = 0;
+            billetera = new modulo.Billetera(montoInicial);
+            billetera.registrarSalida(salida);
+            saldo = billetera.consultarSaldo();
+            saldoEsperado = montoInicial;
+            assert.equal(saldo, saldoEsperado);
+        });
+
+        it('Si se ejecuta el metodo "registrar salida" con un monto menor a cero, se lanza una excepcion "Monto no debe ser menor a 0"', function () {
+            montoInicial = 150;
+            billetera = new modulo.Billetera(montoInicial);
+            expect(() => billetera.registrarSalida(-1)).to.throw(Error, /Monto no debe ser menor a 0/);
+        });
+
+        it('Si la billetera tiene un monto inicial > 0, entonces al ejecutar el metodo "registrar salida" con un monto mayor al saldo, se lanza una excepcion "Saldo insuficiente en la billetera"', function () {
+            montoInicial = 100;
+            billetera = new modulo.Billetera(montoInicial);
+            expect(() => billetera.registrarSalida(120)).to.throw(Error, /Saldo insuficiente en la billetera/);
         });
     });
 });
