@@ -17,7 +17,7 @@ AfterAll(async () => {
                 'App Version': '0.3.2',
                 'Test Environment': 'POC'
             },
-            name: 'Tests de Comportamiento'
+            name: 'Tests de Comportamiento API & UI'
         });
     }, 0);
 });

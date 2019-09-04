@@ -6,13 +6,13 @@
   "scripts": {
     "server:ws": "node ./app/api/server.js",
     "server:www": "node ./www/server.js",
-    "server:all": "npm run server:ws && npm run server:www",
+    "servers": "npm run server:ws && npm run server:www",
     "test:bdd": "mkdirp report && ./node_modules/.bin/cucumber-js --require cucumber.conf.js --require features/support --format node_modules/cucumber-pretty --format json:report/cucumber_report.json",
     "test:unittest": "./node_modules/.bin/mocha ./test/TestBilletera.js --reporter mochawesome --reporter-options reportDir=report && ./node_modules/.bin/opener report/mochawesome.html",
     "test:api": "npm run test:bdd -- features/consultar_saldo.feature features/registrar_ingreso.feature",
     "test:ui": "npm run test:bdd -- features/UITest_registrar_ingreso.feature",
-    "test": "echo '::::: TESTS UNITARIOS :::::' && ./node_modules/.bin/mocha ./test/TestBilletera.js && echo '::::: TESTS DE COMPORTAMIENTO :::::' && ./node_modules/.bin/cucumber-js",
-    "test:visual": "npm run test:unittest && npm run test:bdd"
+    "test:console": "echo '::::: TESTS UNITARIOS :::::' && ./node_modules/.bin/mocha ./test/TestBilletera.js && echo '::::: TESTS DE COMPORTAMIENTO :::::' && ./node_modules/.bin/cucumber-js",
+    "test": "npm run test:unittest && npm run test:bdd"
   },
   "keywords": [],
   "author": "",

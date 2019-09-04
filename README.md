@@ -2,23 +2,44 @@
 Proyecto Final del Modulo 3 de la Maestria en Direccion Estrategica en Ingenieria de Software, en donde se muestra la implementación de todos los niveles de pruebas en el diagrama piramidal.
 
 ## Requerimientos
+Para poder ejecutar el proyecto se necesita:
 
-Se necesita tener instalado NodeJS
+### Se necesita tener instalado NodeJS
 
-Se necesita tener instalado Mocha
+Puede descargarlo en: https://nodejs.org/es/
 
-npm install mocha -g
+### Instale las dependencias del proyecto
 
-Se necesita tener instalado Chai
+Ejecute el siguiente comando:
 
-npm install chai -g
+  `npm install`
 
-Para servicios web instalamos express y body-parser
+## Modulos desarrollados
+A continuacion se detalla las instrucciones para ejecutar los servicios y las pruebas;
+ todas las pruebas generan un reporte en formato HTML para que sea mas intuitiva su comprensión,
+  dichos reportes se generan en la carpeta *report*.
 
-npm install express --save
-npm install body-parser --save
-npm install cucumber --save
-npm install request --save
-npm install request-promise --save
-npm install selenium-cucumber-js --save
-npm install cucumber-pretty --save
+### Servidores de Servicios Web y de Paginas Web
+Ejecutar en la carpeta raiz del proyecto:
+
+  `npm run servers `
+  
+### Pruebas Unitarias
+Ejecutar en la carpeta raiz del proyecto:
+
+  `npm run test:unittest `
+  
+### Pruebas Comportamiento a la API
+Ejecutar en la carpeta raiz del proyecto:
+
+  `npm run test:api `
+  
+### Pruebas Comportamiento a la Interfaz de Usuario
+Ejecutar en la carpeta raiz del proyecto:
+
+  `npm run test:ui `
+  
+### Ejecutar todas las pruebas
+Ejecutar en la carpeta raiz del proyecto:
+
+  `npm run test `
