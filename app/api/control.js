@@ -3,7 +3,7 @@ module.exports = {
         var _modulo = require("../logic/billetera.js");
         var _billetera = new _modulo.Billetera(0);
         var _validarNumero = function (numero) {
-            numero = Number.parseInt(numero);
+            numero = Number.parseFloat(numero);
             if (Number.isNaN(numero)){
                 throw new Error('El dato debe ser un numero');
             }
@@ -16,7 +16,7 @@ module.exports = {
                 _billetera.registrarIngreso(monto);
                 nuevoSaldo = _billetera.consultarSaldo();
                 moneda = _billetera.consultarMoneda();
-                resultado.mesaje =  'Se ha ingresado '+ monto + ' ' + moneda +' a la billetera, el nuevo saldo es: ' + nuevoSaldo + ' ' + moneda;
+                resultado.mensaje =  'Se ha ingresado '+ monto + ' ' + moneda +' a la billetera, el nuevo saldo es: ' + nuevoSaldo + ' ' + moneda;
                 resultado.saldo = nuevoSaldo;
                 resultado.estado = 'OK';
             } catch (e) {
@@ -33,7 +33,7 @@ module.exports = {
                 _billetera.registrarSalida(monto);
                 nuevoSaldo = _billetera.consultarSaldo();
                 moneda = _billetera.consultarMoneda();
-                resultado.mesaje =  'Se ha retirado '+ monto + ' ' + moneda +' de la billetera, el nuevo saldo es: ' + nuevoSaldo + ' ' + moneda;
+                resultado.mensaje =  'Se ha retirado '+ monto + ' ' + moneda +' de la billetera, el nuevo saldo es: ' + nuevoSaldo + ' ' + moneda;
                 resultado.saldo = _billetera.consultarSaldo();
                 resultado.estado = 'OK';
             } catch (e) {
@@ -48,7 +48,7 @@ module.exports = {
             try {
                 saldo = _billetera.consultarSaldo();
                 moneda = _billetera.consultarMoneda();
-                resultado.mesaje =  'Saldo: ' + saldo + ' ' + moneda;
+                resultado.mensaje =  'Saldo: ' + saldo + ' ' + moneda;
                 resultado.saldo = saldo;
                 resultado.estado = 'OK';
             } catch (e) {

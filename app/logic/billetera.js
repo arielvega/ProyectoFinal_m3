@@ -10,6 +10,9 @@ module.exports = {
         this.consultarSaldo = function () {
             return _saldo;
         };
+        ajustarSaldo = function () {
+            _saldo = Math.round(_saldo * 100) / 100;
+        }
         var _moneda;
         _moneda = 'Bs.';
         this.consultarMoneda = function () {
@@ -20,6 +23,7 @@ module.exports = {
                 throw new Error("Monto no debe ser menor a 0");
             }
             _saldo += monto;
+            ajustarSaldo();
             return _saldo;
         };
         this.registrarSalida = function(monto){
@@ -30,6 +34,7 @@ module.exports = {
                 throw new Error("Saldo insuficiente en la billetera");
             }
             _saldo -= monto;
+            ajustarSaldo();
             return _saldo;
         };
     }

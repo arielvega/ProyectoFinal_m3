@@ -9,6 +9,7 @@ Given('Quiero saber el saldo de la billetera', function () {
     httpOptions = {
         method: 'GET',
         uri: 'http://localhost:3000/api/saldo',
+        json: true,
         resolveWithFullResponse: true
     };
 });
@@ -21,7 +22,6 @@ When('Hago un request GET hacia el url saldo', async function () {
         .catch(function(error) {
             wsResponse = error;
         });
-     console.log(wsResponse);
      this.loadFromResponse(wsResponse);
 });
 

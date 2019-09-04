@@ -13,7 +13,6 @@ Given('El monto {int} Bs como monto de ingreso a la billetera', function (monto)
 });
 
 When('Preparo el JSON de los datos', function () {
-    console.log('DONE');
     httpOptions = {
         method: 'POST',
         uri: 'http://localhost:3000/api/ingreso',

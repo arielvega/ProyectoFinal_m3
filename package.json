@@ -1,10 +1,18 @@
 {
   "name": "pf_modulo3",
   "version": "1.0.0",
-  "description": "",
+  "description": "Proyecto Final del Modulo 3 de la Maestria en Direccion Estrategica en Ingenieria de Software, en donde se muestra la implementación de todos los niveles de pruebas en el diagrama piramidal",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server:ws": "node ./app/api/server.js",
+    "server:www": "node ./www/server.js",
+    "server:all": "npm run server:ws && npm run server:www",
+    "test:bdd": "mkdirp report && ./node_modules/.bin/cucumber-js --require cucumber.conf.js --require features/support --format node_modules/cucumber-pretty --format json:report/cucumber_report.json",
+    "test:unittest": "./node_modules/.bin/mocha ./test/TestBilletera.js --reporter mochawesome --reporter-options reportDir=report && ./node_modules/.bin/opener report/mochawesome.html",
+    "test:api": "npm run test:bdd -- features/consultar_saldo.feature features/registrar_ingreso.feature",
+    "test:ui": "npm run test:bdd -- features/UITest_registrar_ingreso.feature",
+    "test": "echo '::::: TESTS UNITARIOS :::::' && ./node_modules/.bin/mocha ./test/TestBilletera.js && echo '::::: TESTS DE COMPORTAMIENTO :::::' && ./node_modules/.bin/cucumber-js",
+    "test:visual": "npm run test:unittest && npm run test:bdd"
   },
   "keywords": [],
   "author": "",
@@ -13,10 +21,16 @@
     "body-parser": "^1.19.0",
     "chai": "^4.2.0",
     "cucumber": "^5.1.0",
+    "cucumber-html-reporter": "latest",
+    "cucumber-pretty": "^1.5.2",
     "express": "^4.17.1",
+    "mkdirp": "^0.5.1",
     "mocha": "^6.2.0",
+    "mochawesome": "^4.1.0",
+    "open": "^6.4.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",
-    "selenium-cucumber-js": "^1.7.0"
+    "selenium-cucumber-js": "^1.7.0",
+    "selenium-webdriver": "latest"
   }
 }

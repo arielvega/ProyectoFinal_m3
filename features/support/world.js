@@ -13,7 +13,7 @@ class CustomWorld {
             this.saldo = response.saldo;
             this.estado = response.estado;
         } catch (e) {
-            this.loadError(e);
+            this.loadFromError(e);
         }
     }
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Ingreso</title>
+    <script>
+        function registrarIngreso(e) {
+            var _monto = Number.parseFloat(document.getElementById('monto').value);
+            var uri = 'http://localhost:3000/api/ingreso';
+            var data = {monto: _monto};
+            POSTJSONData(uri, data, function (status, object) {
+                if (status == 200) {
+                    respuesta = object.mensaje.split(',');
+                    document.getElementById('msgRespuesta').innerHTML = respuesta[0];
+                    document.getElementById('msgSaldo').innerHTML = respuesta[1];
+                } else {
+                    var w = open('');
+                    w.document.write(object);
+                }
+            })
+
+        }
+
+        function POSTJSONData(uri, data, onReadyListener){
+            var http = new XMLHttpRequest();
+            http.open('POST', uri, true);
+            http.setRequestHeader('Content-type', 'application/json');
+
+            http.onreadystatechange = function() {//Call a function when the state changes.
+                if(http.readyState == 4) {
+                    if (http.status == 200){
+                        resultObject = JSON.parse(http.responseText);
+                    } else {
+                        resultObject = http.responseText;
+                    }
+                    onReadyListener(http.status, resultObject);
+                }
+            }
+            var jsonData = JSON.stringify(data);
+            http.send(jsonData);
+        }
+    </script>
+</head>
+<body>
+<form action="#">
+    <h1>Registrar Ingreso</h1>
+    <label for="monto">Monto:</label><input id="monto" name="monto" type="number" value="0"><br>
+    <button value="Registrar" name="registrar" onclick="registrarIngreso(this);" type="button">Registrar</button>
+</form>
+<h4 id="msgRespuesta"></h4>
+<h4 id="msgSaldo"></h4>
+</body>
+</html>
