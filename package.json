@@ -5,8 +5,11 @@
   "main": "index.js",
   "scripts": {
     "server:ws": "node ./app/api/server.js",
+    "server:ws-stop": "node ./app/api/server.js --stop",
     "server:www": "node ./www/server.js",
+    "server:www-stop": "node ./www/server.js --stop",
     "servers": "npm run server:ws && npm run server:www",
+    "servers-stop": "npm run server:ws-stop && npm run server:www-stop",
     "test:bdd": "mkdirp report && ./node_modules/.bin/cucumber-js --require cucumber.conf.js --require features/support --format node_modules/cucumber-pretty --format json:report/cucumber_report.json",
     "test:unittest": "./node_modules/.bin/mocha ./test/TestBilletera.js --reporter mochawesome --reporter-options reportDir=report && ./node_modules/.bin/opener report/mochawesome.html",
     "test:api": "npm run test:bdd -- features/consultar_saldo.feature features/registrar_ingreso.feature",
@@ -14,8 +17,17 @@
     "test:console": "echo '::::: TESTS UNITARIOS :::::' && ./node_modules/.bin/mocha ./test/TestBilletera.js && echo '::::: TESTS DE COMPORTAMIENTO :::::' && ./node_modules/.bin/cucumber-js",
     "test": "npm run test:unittest && npm run test:bdd"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "TDD",
+    "BDD",
+    "Cucumber",
+    "Mocha",
+    "Selenium",
+    "Unit Tests",
+    "Behavior Tests",
+    "UI Test"
+  ],
+  "author": "Luis Ariel Vega Soliz",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -24,9 +36,11 @@
     "cucumber-html-reporter": "latest",
     "cucumber-pretty": "^1.5.2",
     "express": "^4.17.1",
+    "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "mocha": "^6.2.0",
     "mochawesome": "^4.1.0",
+    "npm": "^6.11.3",
     "open": "^6.4.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.4",

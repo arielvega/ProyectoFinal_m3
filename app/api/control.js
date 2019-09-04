@@ -58,5 +58,11 @@ module.exports = {
             }
             res.json(resultado);
         };
+        this.exit = function (req, res) {
+            resultado = {mensaje: "Servidor dado de baja correctamente"};
+            res.json(resultado);
+            console.log('Servidor dado de baja correctamente bajo solicitud');
+            process.exit();
+        };
     }
 };
