@@ -2,9 +2,7 @@
 Proyecto Final del Modulo 3 de la Maestria en Direccion Estrategica en Ingenieria de Software, en donde se muestra la implementación de todos los niveles de pruebas en el diagrama piramidal.
 
 ## Requerimientos
-Para poder ejecutar el proyecto se necesita:
-
-### Se necesita tener instalado NodeJS
+Para poder ejecutar el proyecto se necesita ejecutarlo bajo plataforma Linux y tener instalado NodeJS
 
 Puede descargarlo en: https://nodejs.org/es/
 
@@ -20,16 +18,22 @@ A continuacion se detalla las instrucciones para ejecutar los servicios y las pr
   dichos reportes se generan en la carpeta *report*.
 
 ### Servidores de Servicios Web y de Paginas Web
-Ejecutar en la carpeta raiz del proyecto:
+Para ejecutar los servicios debe ejecuta en la carpeta raiz del proyecto el siguiente comando:
 
   `npm run servers `
-  
+
+Una vez ejecutados los servidores para probar el funcionamiento debe ingresar a http://localhost:8080/billetera/ingreso.html
+
+Si desea detener los servicios debe ejecuta en la carpeta raiz del proyecto el siguiente comando:
+
+  `npm run servers-stop `
+
 ### Pruebas Unitarias
-Ejecutar en la carpeta raiz del proyecto:
+Debe ejecutar en la carpeta raiz del proyecto:
 
   `npm run test:unittest `
   
-### Pruebas Comportamiento a la API
+### Pruebas de Comportamiento a la API
 Ejecutar en la carpeta raiz del proyecto:
 
   `npm run test:api `
@@ -40,6 +44,9 @@ Ejecutar en la carpeta raiz del proyecto:
   `npm run test:ui `
   
 ### Ejecutar todas las pruebas
-Ejecutar en la carpeta raiz del proyecto:
+Para ejecutar todas las pruebas (Pruebas Unitarias, Pruebas de Comportamiento tanto a la API y a la UI) debe ejecutar en la carpeta raiz del proyecto el siguiente comando:
 
   `npm run test `
+
+Luego de la ejecución se genera los reportes en formato HTML en la carpeta report y se muestra en el navegador.
+

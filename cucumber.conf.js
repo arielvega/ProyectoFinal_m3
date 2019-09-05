@@ -1,23 +1,17 @@
 
 const { setDefaultTimeout, BeforeAll, AfterAll } = require('cucumber');
 const reporter = require('cucumber-html-reporter');
-//https://zaiste.net/nodejs-child-process-spawn-exec-fork-async-await/
 const { spawn } = require('child_process')
 
 setDefaultTimeout(60000);
 
-
-BeforeAll(async () => {
-    var childWS = spawn('npm run server:ws');
-    process.stdin.pipe(childWS.stdin)
-
-    for await (const data of childWS.stdout) {
-        console.log(`stdout from the child: ${data}`);
-    };
-    var childWWW = spawn('npm run server:www');
+BeforeAll( async () => {
+    var childWS = spawn('npm', ['run-script','server:ws']);
+    var childWWW = spawn('npm', ['run','server:www']);
+    await new Promise(done => setTimeout(done, 2000));
 });
 
-AfterAll(async () => {
+AfterAll(() => {
     setTimeout(() => {
         reporter.generate({
             theme: 'bootstrap',
@@ -31,7 +25,7 @@ AfterAll(async () => {
             },
             name: 'Tests de Comportamiento API & UI'
         });
-    }, 0);
-    var StopWS = spawn('npm run server:ws-stop');
-    var StopWWW = spawn('npm run server:www-stop');
+    }, 2000);
+    var StopWS = spawn('npm',['run','server:ws-stop']);
+    var StopWWW = spawn('npm',['run','server:www-stop']);
 });
