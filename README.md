@@ -4,6 +4,7 @@ Proyecto Final del Modulo 3 de la Maestria en Direccion Estrategica en Ingenieri
 ## Requerimientos
 Para poder ejecutar el proyecto se necesita ejecutarlo bajo plataforma Linux y tener instalado NodeJS
 
+### NodeJS
 Puede descargarlo en: https://nodejs.org/es/
 
 ### Instale las dependencias del proyecto
@@ -11,6 +12,13 @@ Puede descargarlo en: https://nodejs.org/es/
 Ejecute el siguiente comando:
 
   `npm install`
+
+## Inicio rápido
+Para ejecutar todas las pruebas (Pruebas Unitarias, Pruebas de Comportamiento tanto a la API y a la UI) debe ejecutar en la carpeta raiz del proyecto el siguiente comando:
+
+  `npm run test `
+
+Luego de la ejecución se genera los reportes en formato HTML en la carpeta report y se muestra en el navegador.
 
 ## Modulos desarrollados
 A continuacion se detalla las instrucciones para ejecutar los servicios y las pruebas;
@@ -43,10 +51,3 @@ Ejecutar en la carpeta raiz del proyecto:
 
   `npm run test:ui `
   
-### Ejecutar todas las pruebas
-Para ejecutar todas las pruebas (Pruebas Unitarias, Pruebas de Comportamiento tanto a la API y a la UI) debe ejecutar en la carpeta raiz del proyecto el siguiente comando:
-
-  `npm run test `
-
-Luego de la ejecución se genera los reportes en formato HTML en la carpeta report y se muestra en el navegador.
-
